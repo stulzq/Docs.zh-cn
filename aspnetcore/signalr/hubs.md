@@ -22,21 +22,21 @@ ms.locfileid: "52282131"
 
 ## <a name="what-is-a-signalr-hub"></a>SignalR 中心是什么
 
-SignalR 中心 API，可从服务器在连接的客户端上调用方法。 在服务器代码中，定义客户端调用的方法。 在客户端代码中，定义从服务器调用的方法。 SignalR 负责在后台实现实时的客户端到服务器和服务器到客户端通信的所有内容。
+SignalR 中心 API 使您可以从服务器调用连接的客户端上的方法。 在服务器代码中，定义客户端调用的方法。 在客户端代码中，定义从服务器调用的方法。 SignalR 负责在后台实现实时的客户端到服务器和服务器到客户端通信的所有内容。
 
 ## <a name="configure-signalr-hubs"></a>配置 SignalR 集线器
 
-SignalR 中间件需要某些服务，通过调用配置`services.AddSignalR`。
+SignalR 中间件需要一些服务，这些服务通过调用`services.AddSignalR`来配置。
 
 [!code-csharp[Configure service](hubs/sample/startup.cs?range=38)]
 
-在 SignalR 功能添加到 ASP.NET Core 应用程序时，通过调用设置 SignalR 路由`app.UseSignalR`中`Startup.Configure`方法。
+将 SignalR 功能添加到 ASP.NET Core 应用程序时，通过在`Startup.Configure`方法中调用`app.UseSignalR`来设置 SignalR 路由。
 
 [!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=57-60)]
 
 ## <a name="create-and-use-hubs"></a>创建和使用中心
 
-通过声明继承的类创建一个中心`Hub`，并向其添加公共方法。 客户端可以调用方法定义为`public`。
+通过声明从`Hub`继承的类来创建中心，并向其添加公共方法。 客户端可以调用定义为`public`的方法。
 
 ```csharp
 public class ChatHub : Hub
@@ -48,12 +48,12 @@ public class ChatHub : Hub
 }
 ```
 
-您可以指定返回类型和参数，包括复杂类型和数组，就像在任何 C# 方法中。 SignalR 处理序列化和反序列化复杂对象和数组中参数和返回值。
+您可以像在任何C＃方法中一样指定返回类型和参数，包括复杂类型和数组。 SignalR 处理参数和返回值中复杂对象和数组的序列化和反序列化。
 
 > [!NOTE]
-> 中心是暂时的：
-> * 不要将状态存储在中心类的属性。 每个集线器方法调用新的中心实例上执行。  
-> * 使用`await`调用取决于中心保持活动状态的异步方法时。 例如，如方法`Clients.All.SendAsync(...)`如果调用，但不可能会失败`await`和集线器方法完成之前`SendAsync`完成。
+> hub 是瞬态的：
+> * 不要将状态存储在 hub 类的属性中。 每个 hub 方法调用都在新的 hub 实例上执行。 
+> * 在调用依赖于 hub 保持活动的异步方法时使用 `await`。 例如，如果在没有 `await` 的情况下调用 `Clients.All.SendAsync(...)` 等方法，则在 `SendAsync` 调用完成之前 hub 方法就完成了。
 
 ## <a name="the-context-object"></a>上下文对象
 
