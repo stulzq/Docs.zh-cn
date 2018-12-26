@@ -53,7 +53,6 @@ public class ChatHub : Hub
 
 > 中心是瞬态的：
 > * 不要将状态存储在 hub 类的属性中。 每个 hub 方法调用都在新的 hub 实例上执行。 
-
 > * 在调用依赖于活动中心的异步方法时使用 `await`。 例如，如果在没有 `await` 的情况下调用 `Clients.All.SendAsync(...)` 等方法，方法会失败，导致在 `SendAsync` 调用完成之前 hub 方法就完成了。
 
 ## <a name="the-context-object"></a>上下文对象
