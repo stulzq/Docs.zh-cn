@@ -22,7 +22,7 @@ ms.locfileid: "52282131"
 
 ## <a name="what-is-a-signalr-hub"></a>SignalR 中心是什么
 
-SignalR 中心 API 使您可以从服务器调用连接的客户端上的方法。 在服务器代码中，定义客户端调用的方法。 在客户端代码中，定义从服务器调用的方法。 SignalR 负责在后台实现实时的客户端到服务器和服务器到客户端通信的所有内容。
+通过 SignalR 中心 API，可以从服务器调用连接的客户端上的方法。 在服务器代码中，定义由客户端调用的方法。 在客户端代码中，则定义从服务器调用的方法。SignalR 负责管理后台中用于实现客户端到服务器和服务器到客户端实时通信的一切内容。
 
 ## <a name="configure-signalr-hubs"></a>配置 SignalR 集线器
 
@@ -48,12 +48,13 @@ public class ChatHub : Hub
 }
 ```
 
-您可以像在任何C＃方法中一样指定返回类型和参数，包括复杂类型和数组。 SignalR 处理参数和返回值中复杂对象和数组的序列化和反序列化。
-
+可以像在任何C＃方法中一样指定返回类型和参数，包括复杂类型和数组。 SignalR 处理参数和返回值中复杂对象和数组的序列化和反序列化。
 > [!NOTE]
-> hub 是瞬态的：
+
+> 中心是瞬态的：
 > * 不要将状态存储在 hub 类的属性中。 每个 hub 方法调用都在新的 hub 实例上执行。 
-> * 在调用依赖于 hub 保持活动的异步方法时使用 `await`。 例如，如果在没有 `await` 的情况下调用 `Clients.All.SendAsync(...)` 等方法，则在 `SendAsync` 调用完成之前 hub 方法就完成了。
+
+> * 在调用依赖于活动中心的异步方法时使用 `await`。 例如，如果在没有 `await` 的情况下调用 `Clients.All.SendAsync(...)` 等方法，方法会失败，导致在 `SendAsync` 调用完成之前 hub 方法就完成了。
 
 ## <a name="the-context-object"></a>上下文对象
 
