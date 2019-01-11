@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core 中的 Razor 页面的筛选方法
+title: ASP.NET Core 中的 Razor 页面的过滤方法
 author: Rick-Anderson
-description: 了解如何为 ASP.NET Core 中的 Razor 页面创建筛选方法。
+description: 了解如何为 ASP.NET Core 中的 Razor 页面创建过滤方法。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/05/2018
@@ -13,7 +13,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/29/2018
 ms.locfileid: "50205933"
 ---
-# <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 页面的筛选方法
+# <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>ASP.NET Core 中的 Razor 页面的过滤方法
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
